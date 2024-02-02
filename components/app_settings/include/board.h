@@ -5,7 +5,7 @@
 #ifndef ESP32_CC_LED_DRIVER_RTOS_BOARD_H
 #define ESP32_CC_LED_DRIVER_RTOS_BOARD_H
 
-#define USE_RTC
+// #define USE_RTC
 #define USE_FAN_PWM
 //#define USE_FAN_ALWAYS
 //#define CUSTOM_3CH_CONTROLLER

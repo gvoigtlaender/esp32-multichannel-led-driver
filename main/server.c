@@ -733,6 +733,7 @@ static esp_err_t settings_post_handler(httpd_req_t *req)
       cJSON *minute = cJSON_GetObjectItem(time, "minute");
       cJSON *second = cJSON_GetObjectItem(time, "second");
 
+#ifdef USE_RTC
       datetime_t datetime;
       datetime.year = year->valueint;
       datetime.month = month->valueint;
@@ -743,6 +744,7 @@ static esp_err_t settings_post_handler(httpd_req_t *req)
       datetime.sec = second->valueint;
 
       mcp7940_set_datetime(&datetime);
+#endif
 
       char *debug_string = NULL;
       debug_string = cJSON_Print(time);
@@ -1573,7 +1575,17 @@ char * get_settings_json()
 
   /* time config */
   datetime_t datetime;
+#ifdef USE_RTC
   mcp7940_get_datetime(&datetime);
+#else
+  datetime.year = 2024;
+  datetime.month = 2;
+  datetime.weekday = 5;
+  datetime.day = 2;
+  datetime.hour = 21;
+  datetime.min = 22;
+  datetime.sec = 23;
+#endif
 
   cJSON * time = cJSON_CreateObject();
   cJSON_AddItemToObject(time, "year", cJSON_CreateNumber(datetime.year));

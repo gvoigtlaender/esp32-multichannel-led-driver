@@ -143,7 +143,6 @@ void init_clock()
 
   /* Set time from STM RTC */
   settimeofday(&stm_now, NULL);
-#endif
 
   /* Print time from STM RTC */
   strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
@@ -153,6 +152,7 @@ void init_clock()
   if (timeinfo.tm_year < (2020 - 1900)) {
     ESP_LOGI(TAG, "Time is not set yet.");
   }
+#endif
 
   if (services->enable_ntp)
   {

@@ -266,6 +266,7 @@ void set_light(const double * target_duty, double target_brightness, uint8_t sto
 
 static void backup_channels()
 {
+#ifdef USE_RTC
   esp_err_t err = ESP_OK;
   led_schedule_rtc_mem_t mem;
 
@@ -282,10 +283,12 @@ static void backup_channels()
   if (err == ESP_OK) {
     ESP_LOGD(TAG, "rtc backup ok!");
   }
+#endif
 }
 
 static void restore_channels()
 {
+#ifdef USE_RTC
   led_schedule_rtc_mem_t mem;
   double duty[MAX_LED_CHANNELS];
 
@@ -298,6 +301,7 @@ static void restore_channels()
     }
     set_light(duty, (double)mem.brightness, 0, 0);
   }
+#endif
 }
 
 /**
