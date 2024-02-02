@@ -13,3 +13,5 @@
 /data/
 /frontend/dist/
 /certs/
+/managed_components/
+dependencies.lock
