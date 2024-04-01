@@ -119,7 +119,8 @@
                   />
                 </div>
               </div>
-              <div v-show="led.sync_channel" class="field has-addons is-narrow">
+              <div v-show="led.sync_channel"
+                class="field has-addons is-narrow">
                 <div class="control">
                   <input
                     v-model.number="led.sync_channel_group"

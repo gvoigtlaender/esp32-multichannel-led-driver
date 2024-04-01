@@ -316,19 +316,19 @@
                           <span
                             class="button is-light"
                             @click="copyTimePoint(index)"
-                          ><copy-icon class="mr-2"/> Copy</span>
+                          ><copy-icon class="mr-2" /> Copy</span>
                         </div>
                         <div class="control">
                           <span
                             class="button is-primary"
                             @click="applyTimePoint(index)"
-                          ><check-icon class="mr-2"/>Now</span>
+                          ><check-icon class="mr-2" />Now</span>
                         </div>
                         <div class="control">
                           <span
                             class="button is-danger"
                             @click="deleteTimePoint(index)"
-                          ><x-icon class="mr-2"/> Delete</span>
+                          ><x-icon class="mr-2" /> Delete</span>
                         </div>
                       </div>
                     </div>

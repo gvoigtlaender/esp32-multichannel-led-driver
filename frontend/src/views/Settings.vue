@@ -20,7 +20,7 @@
             v-bind:class="['button', { 'is-primary': currentTab === tab }]"
             @click="selectTab(idx)"
           >
-            <component v-bind:is="tabIcon(idx)"></component></span>
+            <component v-bind:is="tabIcon(idx)" /></span>
         </div>
       </div>
     </div>

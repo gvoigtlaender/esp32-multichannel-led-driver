@@ -122,7 +122,10 @@
           </div>
         </div>
 
-        <div class="field is-horizontal" v-show="scheduleConfig.mode === 0">
+        <div
+          v-show="scheduleConfig.mode === 0"
+          class="field is-horizontal"
+        >
           <div class="field-label is-normal">
             <label class="label">Transition duration</label>
           </div>
@@ -204,7 +207,10 @@
             </div>
           </div>
         </div>
-        <div class="field is-horizontal" v-show="scheduleConfig.use_sync">
+        <div
+          v-show="scheduleConfig.use_sync"
+          class="field is-horizontal"
+        >
           <div class="field-label is-normal">
             <label class="label">Group ID</label>
           </div>
@@ -228,7 +234,10 @@
             </div>
           </div>
         </div>
-        <div class="field is-horizontal" v-show="scheduleConfig.use_sync">
+        <div
+          v-show="scheduleConfig.use_sync"
+          class="field is-horizontal"
+        >
           <div class="field-label is-normal">
             <label class="label">Is Primary</label>
           </div>
@@ -236,8 +245,8 @@
             <div class="field is-narrow">
               <div class="control">
                 <toggle-switch
-                    v-model="scheduleConfig.sync_master"
-                    round
+                  v-model="scheduleConfig.sync_master"
+                  round
                 />
               </div>
             </div>

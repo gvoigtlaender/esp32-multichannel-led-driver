@@ -13,7 +13,7 @@
             <!-- Gpio PIN -->
             <div class="field is-horizontal">
               <div class="field-label is-normal">
-                <label class="label">PIN {{gpio.pin}}</label>
+                <label class="label">PIN {{ gpio.pin }}</label>
               </div>
               <div class="field-body">
                 <div class="field">
@@ -51,7 +51,7 @@
             <!-- Gpio PIN -->
             <div class="field is-horizontal">
               <div class="field-label is-normal">
-                <label class="label">PIN {{gpio.pin}}</label>
+                <label class="label">PIN {{ gpio.pin }}</label>
               </div>
               <div class="field-body">
                 <div class="field">
