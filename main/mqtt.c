@@ -295,7 +295,7 @@ void mqtt_publish_device_status(esp_mqtt_client_handle_t mqtt_client)
     det_time_string_since_boot((char*) &time_string);
     cJSON_AddItemToObject(root, "state", cJSON_CreateString(online));
     cJSON_AddItemToObject(root, "up_time", cJSON_CreateString(time_string));
-    get_time_string((char*) &time_string);
+    get_time_string((char*) &time_string, "%R", 6);
     cJSON_AddItemToObject(root, "local_time", cJSON_CreateString(time_string));
     cJSON_AddItemToObject(root, "free_heap", cJSON_CreateNumber(system_status->free_heap));
     cJSON_AddItemToObject(root, "voltage", cJSON_CreateNumber(voltage));

@@ -114,12 +114,14 @@ void init_clock()
   services_t * services = get_services();
 
   /* Set timezone from config */
-  if (services->utc_offset > 0) {
-    snprintf(tz_buff, 32, "UTC-%d", services->utc_offset + ((uint8_t)services->ntp_dst));    //GMT+2
-  } else {
-    uint8_t offset = fabs((double)services->utc_offset);
-    snprintf(tz_buff, 32, "UTC+%d",  offset + ((uint8_t)services->ntp_dst));    //UTC-2
-  }
+  // if (services->utc_offset > 0) {
+  //   snprintf(tz_buff, 32, "UTC-%d", services->utc_offset + ((uint8_t)services->ntp_dst));    //GMT+2
+  // } else {
+  //   uint8_t offset = fabs((double)services->utc_offset);
+  //   snprintf(tz_buff, 32, "UTC+%d",  offset + ((uint8_t)services->ntp_dst));    //UTC-2
+  // }
+  // gv: adding the dst is wrong, string needs to be adjusted correctly. this is for german + daylight saving
+  snprintf(tz_buff, 32, "CET-1CEST,M3.5.0,M10.5.0/3");//");
   setenv("TZ", tz_buff, 1);
   tzset();
   ESP_LOGI(TAG, "new TZ is: %s", getenv("TZ"));
@@ -211,7 +213,7 @@ void print_time()
 }
 
 /* return point to string with current: HH:MM */
-void get_time_string(char *time_string)
+void get_time_string(char *time_string, const char* format, size_t maxSize)
 {
   time_t now;
   struct tm timeinfo;
@@ -221,7 +223,7 @@ void get_time_string(char *time_string)
 
   time(&now);
   localtime_r(&now, &timeinfo);
-  strftime(time_string, 6, "%R", &timeinfo);
+  strftime(time_string, maxSize, format, &timeinfo);
 }
 
 void det_time_string_since_boot(char * time_string)

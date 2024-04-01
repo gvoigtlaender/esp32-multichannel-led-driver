@@ -16,7 +16,6 @@
     "compression-webpack-plugin": "^6.1.1",
     "core-js": "^3.25.5",
     "frappe-charts": "^1.6.2",
-    "node-sass": "^4.14.1",
     "tar": "^4.4.13",
     "v-calendar": "^2.0.2",
     "vue": "^2.6.12",
@@ -36,7 +35,7 @@
     "chai": "^4.1.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^6.2.2",
-    "sass": "^1.29.0",
+    "sass": "^1.72.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.12"
   }

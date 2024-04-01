@@ -725,6 +725,7 @@ static esp_err_t settings_post_handler(httpd_req_t *req)
     /* time config ----------------------------- */
     cJSON *time = cJSON_GetObjectItem(root, "time");
     if (cJSON_IsObject(time)) {
+#ifdef USE_RTC
       cJSON *year = cJSON_GetObjectItem(time, "year");
       cJSON *month = cJSON_GetObjectItem(time, "month");
       cJSON *day = cJSON_GetObjectItem(time, "day");
@@ -733,7 +734,6 @@ static esp_err_t settings_post_handler(httpd_req_t *req)
       cJSON *minute = cJSON_GetObjectItem(time, "minute");
       cJSON *second = cJSON_GetObjectItem(time, "second");
 
-#ifdef USE_RTC
       datetime_t datetime;
       datetime.year = year->valueint;
       datetime.month = month->valueint;
@@ -1310,7 +1310,7 @@ char * get_status_json()
   det_time_string_since_boot((char*) &time_string);
   cJSON_AddItemToObject(status, "upTime", cJSON_CreateString(time_string));
 
-  get_time_string((char*) &time_string);
+  get_time_string((char*) &time_string, "%T", 9);
   cJSON_AddItemToObject(status, "localTime", cJSON_CreateString(time_string));
 
   cJSON_AddItemToObject(status, "freeHeap", cJSON_CreateNumber(system_status->free_heap));
@@ -1578,7 +1578,7 @@ char * get_settings_json()
 #ifdef USE_RTC
   mcp7940_get_datetime(&datetime);
 #else
-  datetime.year = 2024;
+  datetime.year = 2024-1970;
   datetime.month = 2;
   datetime.weekday = 5;
   datetime.day = 2;
